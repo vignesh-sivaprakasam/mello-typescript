@@ -10,7 +10,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: 'js/[name].bundle.js',
-            clean: true
+            clean: true,
+            publicPath: '/'
         },
         watch: true,
         devtool: "source-map",
@@ -19,6 +20,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
         },
         devServer: {
             liveReload: true,
+            historyApiFallback: true,
             hot: true
         },
         module: {
@@ -26,6 +28,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
                 {
                     test: /\.tsx?$/,
                     loader: 'babel-loader',
+                },
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
                 },
             ]
         },
