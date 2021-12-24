@@ -4,13 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
     module.exports = {
         entry: {
-            app: ['./src/index.ts'],
+            app: ['./src/index.tsx'],
             vendor: ['react', 'react-dom']
         },
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: 'js/[name].bundle.js',
-            clean: true
+            clean: true,
+            publicPath: '/'
         },
         watch: true,
         devtool: "source-map",
@@ -19,14 +20,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
         },
         devServer: {
             liveReload: true,
+            historyApiFallback: true,
             hot: true
         },
         module: {
             rules: [
                 {
                     test: /\.tsx?$/,
-                    loader: "awesome-typescript-loader"
-                }
+                    loader: 'babel-loader',
+                },
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
+                },
             ]
         },
 
