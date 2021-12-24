@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
     module.exports = {
         entry: {
-            app: ['./src/index.ts'],
+            app: ['./src/index.tsx'],
             vendor: ['react', 'react-dom']
         },
         output: {
@@ -25,8 +25,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
             rules: [
                 {
                     test: /\.tsx?$/,
-                    loader: "awesome-typescript-loader"
-                }
+                    loader: 'babel-loader',
+                },
             ]
         },
 
