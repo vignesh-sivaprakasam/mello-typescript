@@ -1,14 +1,14 @@
 import React from "react";
 import { TopBar } from "../board-list/topbar";
 import { SideBar } from "../board-list/sidebar";
-import "./index.css";
-
+import styles from "./index.module.css";
+console.log("st:", styles);
 export const BoardListComponent = () => {
   return (
-    <div className="board_list_container">
+    <div className={styles.board_list_container}>
       <SideBar />
       <TopBar />
-      <div className="board_list_body">body</div>
+      <div className={styles.board_list_body}>body</div>
     </div>
   );
 };

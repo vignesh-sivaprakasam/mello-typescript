@@ -3,10 +3,12 @@ import { IconHolder } from "./icon-holder";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Box from "@mui/material/Box";
 
+import styles from "../index.module.css";
+
 export const SideBar = () => {
   return (
     <>
-      <div className="board_list_sidebar">
+      <div className={styles.board_list_sidebar}>
         <IconHolder />
         <div>
           <Box
