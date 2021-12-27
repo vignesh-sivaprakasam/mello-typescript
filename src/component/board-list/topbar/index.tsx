@@ -10,7 +10,7 @@ import styles from "./index.module.css";
 console.log(styles);
 export const TopBar: React.FC = () => {
   return (
-    <div className={boardListStyles.board_list_header}>
+    <div className={boardListStyles.board_list_top_bar}>
       <div className={styles.container}>
         <SearchIcon className={styles.icon} />
         <InputBase placeholder="Search" className={styles.input} />

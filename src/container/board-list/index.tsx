@@ -1,6 +1,6 @@
 import React from "react";
-import { BoardListComponent } from "../../component/board-list";
+import { BoardListPage } from "../../component/board-list";
 
 export const BoardListContainer = () => {
-  return <BoardListComponent></BoardListComponent>;
+  return <BoardListPage />;
 };
