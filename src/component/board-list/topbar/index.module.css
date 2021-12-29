@@ -1,4 +1,4 @@
-.search_container {
+.container {
   display: flex;
   align-items: center;
   border: 1px solid gray;
@@ -6,9 +6,9 @@
   padding: 2px 4px;
   margin: 0 auto;
 }
-.search_icon {
+.icon {
   padding: 4px 8px;
 }
-.search_input {
+.input {
   width: 400px;
 }

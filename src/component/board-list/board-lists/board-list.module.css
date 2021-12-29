@@ -1,0 +1,33 @@
+.item_container {
+  width: 80%;
+}
+.item {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  border-bottom: 1px solid #d5d5d5;
+}
+.item:hover {
+  background-color: #1976d14a;
+  border-radius: 25px;
+}
+.date {
+  width: 200px;
+}
+.name {
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.icon_container {
+  margin-left: auto;
+  margin-right: 10%;
+
+  width: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+.edit {
+}
+.delete {
+}

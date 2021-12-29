@@ -1,12 +1,13 @@
 body {
   margin: 0;
 }
-.board_list_header {
+.board_list_top_bar {
   grid-area: header;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 50px;
+  padding-right: 50px;
+  border-bottom: 1px solid grey;
 }
 .board_list_sidebar {
   grid-area: sidebar;
@@ -14,7 +15,7 @@ body {
 }
 .board_list_body {
   grid-area: body;
-  background-color: blue;
+  padding: 10px;
 }
 .board_list_container {
   display: grid;

@@ -4,14 +4,16 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 
-import "./index.css";
+import boardListStyles from "../index.module.css";
+import styles from "./index.module.css";
 
+console.log(styles);
 export const TopBar: React.FC = () => {
   return (
-    <div className="board_list_header">
-      <div className="search_container">
-        <SearchIcon className="search_icon" />
-        <InputBase placeholder="Search" className="search_input" />
+    <div className={boardListStyles.board_list_top_bar}>
+      <div className={styles.container}>
+        <SearchIcon className={styles.icon} />
+        <InputBase placeholder="Search" className={styles.input} />
       </div>
       <Button variant="contained">Create Board</Button>
     </div>
