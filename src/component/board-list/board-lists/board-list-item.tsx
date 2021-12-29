@@ -57,11 +57,10 @@ export const BoardListItem: React.FC<BoardListItemProps> = ({
           {boardName}
         </Typography>
       )}
-      <div className={styles.date}>{dateCreated}</div>
+      <div className={styles.date}>{new Date(dateCreated).toDateString()}</div>
       <Box className={styles.icon_container}>
         <IconButton
           onClick={() => {
-            console.log("Edit click");
             setIsEdit(true);
           }}
         >

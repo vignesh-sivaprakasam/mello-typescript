@@ -1,14 +1,9 @@
 import React from "react";
 import { BoardListItem } from "./board-list-item";
 import styles from "./board-list.module.css";
-
-interface BoardList {
-  id: string;
-  name: string;
-  dateCreated: string;
-}
+import { Board } from "../../../models/board";
 interface BoardListsProp {
-  items: BoardList[];
+  items: Board[];
   onEdit: (id: string, name: string) => void;
   onDelete: (id: string) => void;
 }
@@ -24,8 +19,10 @@ export const BoardLists: React.FC<BoardListsProp> = ({
     <div className={styles.item_container}>
       {items.map((item) => (
         <BoardListItem
-          key={item.id}
-          {...item}
+          key={item._id}
+          id={item._id}
+          name={item.name}
+          dateCreated={item.createdAt}
           onEdit={onEdit}
           onDelete={onDelete}
         />
