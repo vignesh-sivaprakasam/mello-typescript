@@ -18,6 +18,7 @@ interface BoardListPageProps {
   boards: Board[];
   onEdit: (id: string, name: string) => void;
   onDelete: (id: string) => void;
+  onCreate: (name: string) => void;
 }
 
 export const BoardListPage: React.FC<BoardListPageProps> = ({
@@ -25,11 +26,12 @@ export const BoardListPage: React.FC<BoardListPageProps> = ({
   boards,
   onEdit,
   onDelete,
+  onCreate,
 }) => {
   return (
     <div className={styles.board_list_container}>
       <SideBar />
-      <TopBar />
+      <TopBar onCreate={onCreate} />
       <div className={styles.board_list_body}>
         <BoardListHeader />
         {isLoading ? (

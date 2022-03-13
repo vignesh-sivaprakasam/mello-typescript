@@ -8,7 +8,7 @@ import { BoardListContainer } from "../../container/board-list";
 function Boards() {
   return (
     <Routes>
-      <Route index element={"<BoardListContainer />"}></Route>
+      <Route index element={<BoardListContainer />}></Route>
       <Route path={":id"} element={"Seperate"}></Route>
       <Route path={"/me"} element={"Its me"}></Route>
     </Routes>
