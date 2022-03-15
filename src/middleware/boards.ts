@@ -26,3 +26,11 @@ export const deleteBoard = (id: string) =>
     .delete(getBoardUrl(id))
     .then((response) => console.log("Delete :", response))
     .catch((error) => console.log(error));
+
+export const createBoard = (name: string) =>
+  axios
+    .post(BOARD_LIST_URL, {
+      name,
+    })
+    .then((response) => console.log("response :", response))
+    .catch((error) => console.log(error));
