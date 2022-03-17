@@ -3,7 +3,7 @@ import { IconHolder } from "./icon-holder";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Box from "@mui/material/Box";
 
-import styles from "../index.module.css";
+import styles from "../board-list/index.module.css";
 
 export const SideBar = () => {
   return (
