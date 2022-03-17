@@ -1,0 +1,27 @@
+.board_top_bar {
+  grid-area: header;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 50px;
+  border-bottom: 1px solid grey;
+}
+.board_sidebar {
+  grid-area: sidebar;
+  background-color: #283033;
+}
+.board_body {
+  grid-area: body;
+  padding: 10px;
+}
+.board_container {
+  display: grid;
+  height: 100vh;
+  background-color: #f1f4f5;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 80px 1fr 1fr;
+  grid-template-areas:
+    "sidebar header header header header"
+    "sidebar body   body   body   body"
+    "sidebar body   body   body   body";
+}

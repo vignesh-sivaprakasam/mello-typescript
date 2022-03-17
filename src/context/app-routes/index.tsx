@@ -4,12 +4,13 @@ import { PATH_HOME, PATH_BOARDS } from "../../utils/constants";
 
 //Container components
 import { BoardListContainer } from "../../container/board-list";
+import { BoardContainer } from "../../container/board";
 
 function Boards() {
   return (
     <Routes>
       <Route index element={<BoardListContainer />}></Route>
-      <Route path={":id"} element={"Seperate"}></Route>
+      <Route path={":id"} element={<BoardContainer />}></Route>
       <Route path={"/me"} element={"Its me"}></Route>
     </Routes>
   );
