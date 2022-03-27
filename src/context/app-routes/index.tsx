@@ -10,7 +10,7 @@ function Boards() {
   return (
     <Routes>
       <Route index element={<BoardListContainer />}></Route>
-      <Route path={":id"} element={<BoardContainer />}></Route>
+      <Route path={":boardID"} element={<BoardContainer />}></Route>
       <Route path={"/me"} element={"Its me"}></Route>
     </Routes>
   );

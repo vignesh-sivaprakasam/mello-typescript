@@ -13,16 +13,20 @@ const { useState } = React;
 export interface EditStackDialogProps {
   isOpen: boolean;
   name: string;
+  color: string;
   onClose: () => void;
-  onSubmit: (_: string) => void;
+  onSubmit: (_: string, _: string) => void;
 }
 export const EditStackDialog: React.FC<EditStackDialogProps> = ({
   isOpen,
   name,
+  color,
   onSubmit,
   onClose,
 }) => {
   const [stackName, setName] = useState(name);
+  const [activeColor, setActiveColor] = useState(color);
+  console.log("Active color: ", activeColor);
   return (
     <>
       <ReactModal isOpen={isOpen} onClose={onClose} title="Edit Stack">
@@ -36,14 +40,20 @@ export const EditStackDialog: React.FC<EditStackDialogProps> = ({
                 setName(value);
               }}
             />
-            <ColorComponent />
+            <ColorComponent
+              activeColor={activeColor}
+              onColorChange={setActiveColor}
+            />
           </Box>
           <DialogActions>
             <Button variant="text" onClick={onClose}>
               Cancel
             </Button>
-            <Button variant="contained" onClick={() => onSubmit("asd")}>
-              Create
+            <Button
+              variant="contained"
+              onClick={() => onSubmit(stackName, activeColor)}
+            >
+              Save
             </Button>
           </DialogActions>
         </Box>

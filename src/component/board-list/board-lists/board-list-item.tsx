@@ -9,6 +9,8 @@ import TextField from "@mui/material/TextField";
 
 import styles from "./board-list.module.css";
 
+import { getBoardUrl } from "../../../utils/index";
+
 interface BoardListItemProps {
   id: string;
   name: string;
@@ -31,8 +33,12 @@ export const BoardListItem: React.FC<BoardListItemProps> = ({
     setBoardName(name);
     setIsEdit(false);
   };
+
+  const onClick = () => {
+    window.open(getBoardUrl(id));
+  };
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={onClick}>
       <DashboardRoundedIcon color="primary" sx={{ padding: 2 }} />
       {isEdit ? (
         <TextField
