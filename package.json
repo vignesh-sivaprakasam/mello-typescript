@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack",
+    "start": "webpack-dev-server --mode development --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.js",
     "lint:fix": "eslint --fix . && echo 'Lint complete.'"
   },
   "dependencies": {
@@ -62,7 +62,9 @@
       "@babel/preset-typescript"
     ],
     "plugins": [
-      ["@babel/plugin-transform-runtime"]
+      [
+        "@babel/plugin-transform-runtime"
+      ]
     ]
   }
 }

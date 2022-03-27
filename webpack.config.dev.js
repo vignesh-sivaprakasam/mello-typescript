@@ -13,9 +13,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
             clean: true,
             publicPath: '/'
         },
-        mode: "production",
+        watch: true,
+        devtool: "source-map",
         resolve: {
             extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
+        },
+        devServer: {
+            liveReload: true,
+            historyApiFallback: true,
+            hot: true
         },
         module: {
             rules: [
