@@ -17,8 +17,15 @@ const colors = [
   "#8f7ee6",
   "#98aab3",
 ];
-export const ColorComponent: React.FC = () => {
-  const [active, setActive] = useState(colors[0]);
+
+export interface ColorComponentProps {
+  activeColor: string;
+  onColorChange: (_: string) => void;
+}
+export const ColorComponent: React.FC<ColorComponentProps> = ({
+  activeColor,
+  onColorChange,
+}) => {
   return (
     <>
       <Typography padding={2} fontWeight="bold">
@@ -28,9 +35,9 @@ export const ColorComponent: React.FC = () => {
         {colors.map((color) => (
           <Color
             key={color}
-            isActive={active === color}
+            isActive={activeColor === color}
             color={color}
-            onClick={setActive}
+            onClick={onColorChange}
           />
         ))}
       </Box>

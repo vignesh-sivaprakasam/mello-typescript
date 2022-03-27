@@ -16,8 +16,8 @@ export interface StackHeaderProps {
   id: string;
   name: string;
   color: string;
-  onEdit: () => void;
-  onDelete: () => void;
+  onEdit: (id: string, name: string, color: string) => void;
+  onDelete: (id: string) => void;
 }
 
 export const StackHeader: React.FC<StackHeaderProps> = ({
@@ -67,10 +67,13 @@ export const StackHeader: React.FC<StackHeaderProps> = ({
       <EditStackDialog
         isOpen={isEditDialogOpen}
         name={name}
+        color={color}
         onClose={() => {
           setIsEditDialogOpen(false);
         }}
-        onSubmit={() => {}}
+        onSubmit={(newName, newColor) => {
+          onEdit(id, newName, newColor);
+        }}
       />
     </StackComponent>
   );

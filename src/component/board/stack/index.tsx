@@ -7,7 +7,7 @@ export interface StackProps {
   id: string;
   name: string;
   color: string;
-  onEdit: () => void;
+  onEdit: (stackID: string, name: string, color: string) => void;
   onDelete: () => void;
 }
 

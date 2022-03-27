@@ -13,6 +13,12 @@ export const getBoardsList = async (): Promise<Board[]> =>
     .then(({ data }) => data)
     .catch((error) => console.log(error));
 
+export const getBoardDetails = async (id: string): Promise<Board> =>
+  axios
+    .get(getBoardUrl(id))
+    .then(({ data }) => data)
+    .catch((error) => console.log(error));
+
 export const updateBoard = (id: string, name: string) =>
   axios
     .put(getBoardUrl(id), {
