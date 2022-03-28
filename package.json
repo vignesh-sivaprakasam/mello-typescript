@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js",
+    "start": "webpack serve --open --config webpack.config.js",
     "start:dev": "webpack-dev-server --mode development --config webpack.config.dev.js",
-    "build": "webpack serve --open --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "lint:fix": "eslint --fix . && echo 'Lint complete.'"
   },
   "dependencies": {
