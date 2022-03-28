@@ -17,6 +17,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
         resolve: {
             extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
         },
+        performance : {
+            hints : false
+        },
         module: {
             rules: [
                 {
