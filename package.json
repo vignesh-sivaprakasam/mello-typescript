@@ -6,10 +6,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack serve --open --config webpack.config.js",
     "start:dev": "webpack-dev-server --mode development --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.js",
-    "lint:fix": "eslint --fix . && echo 'Lint complete.'"
+    "lint:fix": "eslint --fix . && echo 'Lint complete.'",
+    "dev-server": "webpack-dev-server --open",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@babel/core": "^7.17.8",
@@ -23,6 +25,7 @@
     "axios": "^0.24.0",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
+    "express": "^4.17.3",
     "html-webpack-plugin": "^5.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
