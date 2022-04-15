@@ -65,6 +65,7 @@ export const StackHeader: React.FC<StackHeaderProps> = ({
         <MenuItem onClick={handleClose}>Delete</MenuItem>
       </Menu>
       <EditStackDialog
+        title="Edit Stack"
         isOpen={isEditDialogOpen}
         name={name}
         color={color}
@@ -73,6 +74,7 @@ export const StackHeader: React.FC<StackHeaderProps> = ({
         }}
         onSubmit={(newName, newColor) => {
           onEdit(id, newName, newColor);
+          setIsEditDialogOpen(false);
         }}
       />
     </StackComponent>

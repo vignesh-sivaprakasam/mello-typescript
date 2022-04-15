@@ -11,6 +11,7 @@ import { ColorComponent } from "../../../../common/ColorComponent";
 const { useState } = React;
 
 export interface EditStackDialogProps {
+  title: string;
   isOpen: boolean;
   name: string;
   color: string;
@@ -18,6 +19,7 @@ export interface EditStackDialogProps {
   onSubmit: (_: string, _: string) => void;
 }
 export const EditStackDialog: React.FC<EditStackDialogProps> = ({
+  title,
   isOpen,
   name,
   color,
@@ -29,7 +31,7 @@ export const EditStackDialog: React.FC<EditStackDialogProps> = ({
   console.log("Active color: ", activeColor);
   return (
     <>
-      <ReactModal isOpen={isOpen} onClose={onClose} title="Edit Stack">
+      <ReactModal isOpen={isOpen} onClose={onClose} title={title}>
         <Box width={500}>
           <Box padding={2}>
             <LabelInput
