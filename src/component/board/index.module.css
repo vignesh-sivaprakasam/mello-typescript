@@ -13,6 +13,7 @@
 .board_body {
   grid-area: body;
   padding: 10px;
+  overflow: scroll;
 }
 .board_container {
   display: grid;

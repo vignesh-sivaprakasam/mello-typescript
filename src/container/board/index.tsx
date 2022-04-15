@@ -4,7 +4,7 @@ import { Board } from "../../component/board";
 import { StackType } from "../../models/stack";
 
 import { getBoardDetails } from "../../middleware/boards";
-import { updateStack } from "../../middleware/stack";
+import { addStack, updateStack } from "../../middleware/stack";
 
 const { useEffect, useState } = React;
 
@@ -49,10 +49,18 @@ export const BoardContainer: React.FC = () => {
     return null;
   }
 
-  const onEdit =
+  const onEditStack =
     (boardId: string) =>
     async (stackId: string, name: string, color: string) => {
       await updateStack(boardId, stackId, name, color);
+      const res = await getBoardDetails(boardID);
+      console.log(res);
+      setStacks(res.stacks);
+    };
+  const onAddStack =
+    (boardId: string) => async (name: string, color: string) => {
+      console.log("boardID ", boardId, " name: ", name, " color: ", color);
+      await addStack(boardId, name, color);
     };
   return (
     <>
@@ -60,7 +68,8 @@ export const BoardContainer: React.FC = () => {
         isLoading={isLoading}
         stacks={stacks}
         boardID={boardID}
-        onEdit={onEdit}
+        onEditStack={onEditStack}
+        onAddStack={onAddStack}
       />
     </>
   );

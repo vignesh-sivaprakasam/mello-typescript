@@ -4,9 +4,7 @@ import Box from "@mui/material/Box";
 import { Color } from "./color";
 import Typography from "@mui/material/Typography";
 
-const { useState } = React;
-
-const colors = [
+export const colors = [
   "#d93651",
   "#ff9f1a",
   "#ffd500",

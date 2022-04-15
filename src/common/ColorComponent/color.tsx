@@ -15,7 +15,7 @@ export const Color: React.FC<ColorProps> = ({
 }) => {
   return (
     <Box
-      sx={{ borderWidth: 2, borderStyle: "solid" }}
+      sx={{ borderWidth: 2, borderStyle: "solid", cursor: "pointer" }}
       borderRadius="30px"
       borderColor={isActive ? "#00aaff" : "white"}
       onClick={() => {

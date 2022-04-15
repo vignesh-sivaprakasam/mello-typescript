@@ -3,6 +3,7 @@ import { Stack as StackComponent, Box, CircularProgress } from "@mui/material";
 import { SideBar } from "../sidebar";
 import { TopBar } from "./topbar";
 import { Stack } from "./stack";
+import { AddStack } from "./stack/add-stack";
 
 import styles from "./index.module.css";
 import { StackType } from "../../models/stack";
@@ -11,16 +12,18 @@ export interface BoardProps {
   isLoading: boolean;
   boardID: string;
   stacks: StackType[];
-  onEdit: (
+  onEditStack: (
     boardID: string
   ) => (stackID: string, name: string, color: string) => void;
+  onAddStack: (boardID: string) => (name: string, color: string) => void;
 }
 
 export const Board: React.FC<BoardProps> = ({
   isLoading,
   boardID,
   stacks,
-  onEdit,
+  onAddStack,
+  onEditStack,
 }) => {
   console.log("stack: ", stacks);
   return (
@@ -44,10 +47,11 @@ export const Board: React.FC<BoardProps> = ({
               id={_id}
               name={name}
               color={color}
-              onEdit={onEdit(boardID)}
+              onEdit={onEditStack(boardID)}
               onDelete={() => {}}
             />
           ))}
+          <AddStack onCreate={onAddStack(boardID)} />
         </StackComponent>
       )}
     </div>
