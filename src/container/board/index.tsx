@@ -4,7 +4,8 @@ import { Board } from "../../component/board";
 import { StackType } from "../../models/stack";
 
 import { getBoardDetails } from "../../middleware/boards";
-import { addStack, updateStack } from "../../middleware/stack";
+import { addStack, updateStack, deleteStack } from "../../middleware/stack";
+import { addCard, updateCard } from "../../middleware/cards";
 
 const { useEffect, useState } = React;
 
@@ -49,18 +50,46 @@ export const BoardContainer: React.FC = () => {
     return null;
   }
 
+  const fetchBoardDetails = async (boardId: string) => {
+    const res = await getBoardDetails(boardId);
+    console.log(res);
+    setStacks(res.stacks);
+  };
+
   const onEditStack =
     (boardId: string) =>
     async (stackId: string, name: string, color: string) => {
       await updateStack(boardId, stackId, name, color);
-      const res = await getBoardDetails(boardID);
-      console.log(res);
-      setStacks(res.stacks);
+      await fetchBoardDetails(boardId);
     };
   const onAddStack =
     (boardId: string) => async (name: string, color: string) => {
       console.log("boardID ", boardId, " name: ", name, " color: ", color);
       await addStack(boardId, name, color);
+      await fetchBoardDetails(boardId);
+    };
+
+  const onDeleteStack = (boardId: string) => async (stackId: string) => {
+    await deleteStack(boardId, stackId);
+    await fetchBoardDetails(boardId);
+  };
+
+  const onAddCard =
+    (boardId: string) =>
+    (stackId: string) =>
+    async (title: string, description: string) => {
+      console.log(boardId, stackId, " Card: ", { title, description });
+      await addCard(boardId, stackId, title, description);
+      await fetchBoardDetails(boardId);
+    };
+
+  const onEditCard =
+    (boardId: string) =>
+    (stackId: string) =>
+    async (cardId: string, title: string, description: string) => {
+      console.log(boardId, stackId, " Card: ", { cardId, title, description });
+      await updateCard(boardId, stackId, cardId, title, description);
+      await fetchBoardDetails(boardId);
     };
   return (
     <>
@@ -70,6 +99,9 @@ export const BoardContainer: React.FC = () => {
         boardID={boardID}
         onEditStack={onEditStack}
         onAddStack={onAddStack}
+        onDeleteStack={onDeleteStack}
+        onAddCard={onAddCard}
+        onEditCard={onEditCard}
       />
     </>
   );

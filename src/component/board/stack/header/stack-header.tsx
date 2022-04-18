@@ -38,6 +38,11 @@ export const StackHeader: React.FC<StackHeaderProps> = ({
     setMenuElement(null);
   };
 
+  const handleDeleteMenuClick = () => {
+    onDelete(id);
+    handleClose();
+  };
+
   const handleEditMenuClick = () => {
     setIsEditDialogOpen(true);
   };
@@ -62,7 +67,7 @@ export const StackHeader: React.FC<StackHeaderProps> = ({
         onClose={handleClose}
       >
         <MenuItem onClick={handleEditMenuClick}>Edit</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+        <MenuItem onClick={handleDeleteMenuClick}>Delete</MenuItem>
       </Menu>
       <EditStackDialog
         title="Edit Stack"

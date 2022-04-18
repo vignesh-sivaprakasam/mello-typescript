@@ -1,50 +1,54 @@
 import * as React from "react";
 
-import { LabelInput } from "../../../../common/LabelInput";
+import { LabelInput } from "../../../common/LabelInput";
 
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { ReactModal } from "../../../../common/modal/modal";
+import { ReactModal } from "../../../common/modal/modal";
 import DialogActions from "@mui/material/DialogActions";
-import { ColorComponent } from "../../../../common/ColorComponent";
 
 const { useState } = React;
 
-export interface EditStackDialogProps {
+export interface AddCardDialogProps {
   title: string;
   isOpen: boolean;
-  name: string;
-  color: string;
+  cardTitle: string;
+  cardDescription: string;
   onClose: () => void;
   onSubmit: (_: string, __: string) => void;
 }
-export const EditStackDialog: React.FC<EditStackDialogProps> = ({
+export const AddCardDialog: React.FC<AddCardDialogProps> = ({
   title,
   isOpen,
-  name,
-  color,
+  cardTitle: cardHeaderTitle,
+  cardDescription: cardHeaderDescription,
   onSubmit,
   onClose,
 }) => {
-  const [stackName, setName] = useState(name);
-  const [activeColor, setActiveColor] = useState(color);
-  console.log("Active color: ", activeColor);
+  const [cardTitle, setCardTitle] = useState(cardHeaderTitle);
+  const [cardDescription, setCardDescription] = useState(cardHeaderDescription);
   return (
     <>
       <ReactModal isOpen={isOpen} onClose={onClose} title={title}>
         <Box width={500}>
           <Box padding={2}>
             <LabelInput
-              labelText={"Name"}
-              value={stackName}
+              labelText={"Title"}
+              value={cardTitle}
               fullWidth={true}
               onChange={({ target: { value } }) => {
-                setName(value);
+                setCardTitle(value);
               }}
             />
-            <ColorComponent
-              activeColor={activeColor}
-              onColorChange={setActiveColor}
+          </Box>
+          <Box padding={2}>
+            <LabelInput
+              labelText={"Description"}
+              value={cardDescription}
+              fullWidth={true}
+              onChange={({ target: { value } }) => {
+                setCardDescription(value);
+              }}
             />
           </Box>
           <DialogActions>
@@ -53,7 +57,7 @@ export const EditStackDialog: React.FC<EditStackDialogProps> = ({
             </Button>
             <Button
               variant="contained"
-              onClick={() => onSubmit(stackName, activeColor)}
+              onClick={() => onSubmit(cardTitle, cardDescription)}
             >
               Save
             </Button>
