@@ -1,6 +1,4 @@
 import axios from "axios";
-import { StackType } from "../models/stack";
-import { Board } from "../models/board";
 
 import { ENDPOINTS } from "./endpoints";
 import { DOMAIN } from "./domain";
@@ -38,6 +36,15 @@ export const addStack = (
       name: stackName,
       color: stackColor,
     })
+    .then(({ data }) => {
+      console.log("stack update ", data);
+      return data;
+    })
+    .catch((error) => console.log(error));
+
+export const deleteStack = (boardId: string, stackId: string) =>
+  axios
+    .delete(getStackUrl(boardId, stackId))
     .then(({ data }) => {
       console.log("stack update ", data);
       return data;

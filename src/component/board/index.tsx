@@ -16,6 +16,15 @@ export interface BoardProps {
     boardID: string
   ) => (stackID: string, name: string, color: string) => void;
   onAddStack: (boardID: string) => (name: string, color: string) => void;
+  onDeleteStack: (boardID: string) => (stackId: string) => void;
+  onAddCard: (
+    boardID: string
+  ) => (stackId: string) => (title: string, description: string) => void;
+  onEditCard: (
+    boardID: string
+  ) => (
+    stackId: string
+  ) => (cardId: string, title: string, description: string) => void;
 }
 
 export const Board: React.FC<BoardProps> = ({
@@ -24,6 +33,9 @@ export const Board: React.FC<BoardProps> = ({
   stacks,
   onAddStack,
   onEditStack,
+  onDeleteStack,
+  onAddCard,
+  onEditCard,
 }) => {
   console.log("stack: ", stacks);
   return (
@@ -41,14 +53,17 @@ export const Board: React.FC<BoardProps> = ({
         </Box>
       ) : (
         <StackComponent className={styles.board_body} direction="row">
-          {stacks.map(({ _id, name, color }) => (
+          {stacks.map(({ _id, name, color, cards }) => (
             <Stack
               key={_id}
               id={_id}
               name={name}
               color={color}
+              cards={cards}
               onEdit={onEditStack(boardID)}
-              onDelete={() => {}}
+              onDelete={onDeleteStack(boardID)}
+              onAddCard={onAddCard(boardID)}
+              onEditCard={onEditCard(boardID)}
             />
           ))}
           <AddStack onCreate={onAddStack(boardID)} />

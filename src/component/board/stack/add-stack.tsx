@@ -32,7 +32,10 @@ export const AddStack: React.FC<AddStackProps> = ({ onCreate }) => {
           name="New Stack"
           color={colors[0]}
           onClose={onClose}
-          onSubmit={onCreate}
+          onSubmit={(name, color) => {
+            onCreate(name, color);
+            onClose();
+          }}
         />
       )}
     </Box>
